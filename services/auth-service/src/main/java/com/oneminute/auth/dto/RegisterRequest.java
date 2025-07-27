@@ -3,7 +3,6 @@ package com.oneminute.auth.dto;
 import lombok.*;
 
 @Data
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
