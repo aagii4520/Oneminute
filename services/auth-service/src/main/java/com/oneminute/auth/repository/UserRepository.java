@@ -1,6 +1,6 @@
 package com.oneminute.auth.repository;
 
-import com.oneminute.auth.entity.User.User;
+import com.oneminute.auth.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

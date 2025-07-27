@@ -1,10 +1,11 @@
 package com.oneminute.auth.service;
 
-import com.oneminute.auth.entity.User.User;
+import com.oneminute.auth.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -13,16 +14,17 @@ import java.util.Date;
 import java.util.function.Function;
 
 @Service
+@RequiredArgsConstructor
 public class JwtService {
 
     @Value("${jwt.secret}")
-    private String secret;
+    private String jwtSecret;
 
     @Value("${jwt.expiration}")
     private long expiration;
 
     private SecretKey getSignInKey() {
-        return Keys.hmacShaKeyFor(secret.getBytes());
+        return Keys.hmacShaKeyFor(jwtSecret.getBytes());
     }
 
     public String generateToken(User user) {

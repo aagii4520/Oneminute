@@ -1,4 +1,4 @@
-package com.oneminute.auth.entity.User;
+package com.oneminute.auth.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

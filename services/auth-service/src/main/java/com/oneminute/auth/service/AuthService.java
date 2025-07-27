@@ -4,7 +4,7 @@ package com.oneminute.auth.service;
 import com.oneminute.auth.dto.AuthResponse;
 import com.oneminute.auth.dto.LoginRequest;
 import com.oneminute.auth.dto.RegisterRequest;
-import com.oneminute.auth.entity.User.User;
+import com.oneminute.auth.entity.User;
 import com.oneminute.auth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,7 +20,7 @@ public class AuthService {
 
     public AuthResponse register(RegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email already in use");
+            throw new RuntimeException("Email already in taken");
         }
         var user = User.builder()
                 .username(request.getUsername())
@@ -38,7 +38,7 @@ public class AuthService {
                 .build();
     }
 
-    public AuthResponse authenticate(LoginRequest request) {
+    public AuthResponse login(LoginRequest request) {
         var user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new RuntimeException("User not found"));
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
