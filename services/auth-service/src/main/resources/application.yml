@@ -13,5 +13,5 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
 
 jwt:
-  secret: mysupersecretkey1234567890
+  secret: mysupersecretkey1234567890123456
   expiration: 86400000 # 1 day in ms
